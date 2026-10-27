@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Semana 9 · Página en AWS</title>
+    <meta
+      name="description"
+      content="Página estática de Modelado Ágil de Software, publicada desde GitHub con AWS Amplify."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Outfit:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="masthead">
+      <p class="kicker">ULEAM · Modelado Ágil de Software · Semana 9</p>
+      <div class="masthead-row">
+        <h1>Página web publicada en AWS</h1>
+        <p class="edition">Edición de aula</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="lead">
+        <p class="summary">
+          Sitio estático de una sola página. El código vive en GitHub y AWS
+          Amplify lo construye y lo sirve con HTTPS cada vez que hay un cambio
+          en la rama principal.
+        </p>
+        <dl class="facts">
+          <div>
+            <dt>Autor</dt>
+            <dd>Oleg Kuznetsov</dd>
+          </div>
+          <div>
+            <dt>Repositorio</dt>
+            <dd>Elf3n-RO / semana-9-pagina-web-aws</dd>
+          </div>
+          <div>
+            <dt>Servicio</dt>
+            <dd>AWS Amplify Hosting</dd>
+          </div>
+          <div>
+            <dt>Región</dt>
+            <dd>us-east-1</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="flow" aria-labelledby="flujo">
+        <h2 id="flujo">Cómo llega esta página a internet</h2>
+        <ol>
+          <li>
+            <span>01</span>
+            <h3>GitHub</h3>
+            <p>HTML, CSS y un archivo de compilación. La rama main es la fuente.</p>
+          </li>
+          <li>
+            <span>02</span>
+            <h3>Amplify</h3>
+            <p>Detecta el push, ejecuta el build y publica los archivos estáticos.</p>
+          </li>
+          <li>
+            <span>03</span>
+            <h3>URL pública</h3>
+            <p>La página queda disponible con certificado HTTPS, sin servidor propio.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="proof" aria-labelledby="en-vivo">
+        <h2 id="en-vivo">Comprobación en vivo</h2>
+        <p>
+          Si estás viendo esta página desde el dominio de Amplify, el despliegue
+          ya está activo. El navegador lee el host actual:
+        </p>
+        <p class="host" id="host">cargando…</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Oleg Kuznetsov · elf3n5@gmail.com</p>
+      <p>Modelado Ágil de Software · 5.º semestre</p>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>

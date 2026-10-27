@@ -1,0 +1,14 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - echo "Sitio estatico: no hay paso de compilacion"
+  artifacts:
+    baseDirectory: .
+    files:
+      - index.html
+      - css/**/*
+      - js/**/*
+  cache:
+    paths: []
