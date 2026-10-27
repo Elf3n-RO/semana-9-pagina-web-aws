@@ -3,7 +3,7 @@ frontend:
   phases:
     build:
       commands:
-        - echo "Sitio estatico: no hay paso de compilacion"
+        - echo sitio estatico sin compilacion
   artifacts:
     baseDirectory: .
     files:
