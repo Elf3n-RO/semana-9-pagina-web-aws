@@ -81,7 +81,7 @@ h1 {
 
 .lead {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
   gap: 2rem;
   padding: 2rem 0 1rem;
 }
@@ -100,8 +100,9 @@ h1 {
 
 .facts div {
   display: grid;
-  grid-template-columns: 7.5rem 1fr;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
   gap: 0.75rem;
+  min-width: 0;
   padding-bottom: 0.7rem;
   border-bottom: 1px solid var(--line);
 }
@@ -113,7 +114,9 @@ dt {
 
 dd {
   margin: 0;
+  min-width: 0;
   font-weight: 500;
+  overflow-wrap: anywhere;
 }
 
 .flow h2,
@@ -129,7 +132,7 @@ dd {
 .flow ol {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin: 0;
   padding: 0;
@@ -140,6 +143,7 @@ dd {
   border: 1px solid var(--line);
   border-top: 4px solid var(--accent);
   padding: 1.1rem 1.1rem 1.25rem;
+  min-width: 0;
   min-height: 11rem;
 }
 
@@ -193,7 +197,7 @@ footer p {
   margin: 0;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 860px) {
   .lead,
   .flow ol,
   .masthead-row,
