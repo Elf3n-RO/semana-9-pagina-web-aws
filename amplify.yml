@@ -1,12 +1,12 @@
 version: 1
 frontend:
   phases:
-    preBuild:
-      commands:
-        - npm install
     build:
       commands:
-        - test -f dist/index.html
+        - mkdir dist dist/css dist/img
+        - cp index.html dist/index.html
+        - cp css/styles.css dist/css/styles.css
+        - cp img/* dist/img/
   artifacts:
     baseDirectory: dist
     files:
