@@ -6,7 +6,6 @@ frontend:
         - npm install
     build:
       commands:
-        - node scripts/preparar-dist.js
         - test -f dist/index.html
   artifacts:
     baseDirectory: dist
