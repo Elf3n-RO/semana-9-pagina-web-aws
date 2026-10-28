@@ -1,0 +1,191 @@
+:root {
+  --ink: #111111;
+  --muted: #5e5e5e;
+  --line: #e7e7e7;
+  --paper: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.top,
+main,
+footer {
+  width: min(1080px, calc(100% - 3rem));
+  margin-inline: auto;
+}
+
+.top,
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.top {
+  padding: 1.4rem 0;
+}
+
+.mark,
+.meta,
+footer {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.hero {
+  padding: 4.5rem 0 3.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.eyebrow {
+  margin: 0 0 1.2rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+.song {
+  font-family: Newsreader, Georgia, serif;
+  font-weight: 450;
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  max-width: 11ch;
+  margin: 0;
+  font-size: clamp(3.4rem, 8vw, 6.4rem);
+  line-height: 0.92;
+}
+
+.lede {
+  max-width: 38rem;
+  margin: 1.8rem 0 0;
+  color: #2a2a2a;
+  font-size: 1.2rem;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 4rem;
+  align-items: start;
+  padding-bottom: 4.5rem;
+}
+
+h2 {
+  margin: 0 0 1.4rem;
+  font-size: 2rem;
+}
+
+dl {
+  margin: 0;
+}
+
+dl div {
+  display: grid;
+  grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--line);
+}
+
+dl div:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+dt {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.card {
+  margin: 0;
+  padding: 1.6rem 1.6rem 1.3rem;
+  border: 1px solid var(--line);
+  border-radius: 1.4rem;
+  text-align: center;
+}
+
+.card img {
+  display: block;
+  width: min(100%, 280px);
+  height: auto;
+  margin-inline: auto;
+}
+
+.song {
+  margin: 1.1rem 0 0;
+  font-size: 1.7rem;
+  line-height: 1.1;
+}
+
+.artist,
+.card a {
+  color: var(--muted);
+}
+
+.artist {
+  margin: 0.25rem 0 0.8rem;
+}
+
+.card a {
+  font-size: 0.95rem;
+}
+
+footer {
+  padding: 1.2rem 0 2rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 800px) {
+  .top,
+  main,
+  footer {
+    width: min(1080px, calc(100% - 2rem));
+  }
+
+  .hero {
+    padding-top: 2.4rem;
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+  }
+
+  dl div {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  footer {
+    flex-direction: column;
+  }
+}
