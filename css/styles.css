@@ -91,28 +91,65 @@ body {
   background: linear-gradient(100deg, var(--primary), #c07a5b);
 }
 
-.memes {
+.board {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  padding: 1.4rem 0 0.4rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "cinema cinema cinema"
+    "carrera oficios gato"
+    "error error error"
+    "nyan ardilla continua"
+    "qr qr qr";
+  gap: 0.85rem;
+  align-items: start;
+  padding: 1.2rem 0 2.4rem;
 }
 
-.memes figure {
+.place {
   margin: 0;
 }
 
-.memes__wide {
-  grid-column: 1 / -1;
-}
+.place-cinema { grid-area: cinema; }
+.place-carrera { grid-area: carrera; }
+.place-oficios { grid-area: oficios; }
+.place-error { grid-area: error; }
+.place-nyan { grid-area: nyan; }
+.place-gato { grid-area: gato; }
+.place-ardilla { grid-area: ardilla; }
+.place-continua { grid-area: continua; }
+.place-qr { grid-area: qr; }
 
-.memes img {
+.place img {
   display: block;
   width: 100%;
   height: auto;
   border: 1px solid var(--border);
   border-radius: 22px;
   background: #000;
+}
+
+.place-qr {
+  padding: 0.7rem 0.7rem 0.55rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  text-align: center;
+}
+
+.place-qr img {
+  width: min(100%, 420px);
+  margin-inline: auto;
+  background: #fff;
+}
+
+.place-qr a {
+  display: block;
+}
+
+.place-qr figcaption {
+  margin-top: 0.55rem;
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
 .cantina {
@@ -292,13 +329,22 @@ h2 {
 
 @media (max-width: 800px) {
   .notes,
-  .more,
-  .memes {
+  .more {
     grid-template-columns: 1fr;
   }
 
-  .memes__wide {
-    grid-column: auto;
+  .board {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "cinema"
+      "carrera"
+      "oficios"
+      "error"
+      "nyan"
+      "gato"
+      "ardilla"
+      "continua"
+      "qr";
   }
 
   .hero {
