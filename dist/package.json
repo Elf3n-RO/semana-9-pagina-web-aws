@@ -1,0 +1,8 @@
+{
+  "name": "semana-9-pagina-web-aws",
+  "private": true,
+  "scripts": {
+    "postinstall": "node scripts/preparar-dist.js",
+    "build": "node scripts/preparar-dist.js"
+  }
+}

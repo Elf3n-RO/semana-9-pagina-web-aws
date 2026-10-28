@@ -6,6 +6,7 @@ const skip = new Set(["node_modules", ".git", "dist", "scripts"]);
 
 fs.rmSync(dest, { recursive: true, force: true });
 fs.mkdirSync(dest);
+console.log("preparando dist");
 
 for (const name of fs.readdirSync(".")) {
   if (skip.has(name) || name.startsWith(".")) continue;
