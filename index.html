@@ -3,11 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Oleg Kuznetsov · Modelado ágil</title>
-    <meta
-      name="description"
-      content="Nota de Oleg Kuznetsov sobre publicar un incremento de software desde GitHub con AWS Amplify."
-    />
+    <title>Oleg Kuznetsov</title>
     <meta name="theme-color" content="#0c0a0a" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,89 +11,123 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=5" />
+    <link rel="stylesheet" href="css/styles.css?v=7" />
   </head>
   <body>
     <header class="header">
       <div class="container header__inner">
         <p class="logo">Oleg Kuznetsov</p>
-        <p class="header__meta"><a class="header__link" href="doom/index.html">Jugar</a> · ULEAM · Semana 9</p>
+        <div class="header__actions">
+          <button class="sound" id="sound" type="button" aria-pressed="false" aria-label="Música">
+            ♪
+          </button>
+          <a class="header__link" href="doom/index.html">Jugar</a>
+        </div>
       </div>
     </header>
 
-    <main>
-      <section class="hero">
-        <div class="hero__glow" aria-hidden="true"></div>
-        <div class="container hero__inner">
-          <p class="eyebrow">Modelado Ágil de Software · 5.º semestre</p>
-          <h1>El incremento que se puede abrir.</h1>
-          <p class="lead">
-            Una página estática es el incremento más pequeño que sigue siendo
-            software. Está en un repositorio, se publica sola cuando cambia la
-            rama principal y cualquiera puede comprobar que responde.
-          </p>
-        </div>
-      </section>
-
-      <section class="container notes">
-        <article class="card">
-          <p class="card__kicker">01</p>
-          <h2>Hecho visible</h2>
-          <p>
-            En un ciclo corto el criterio de terminado no es el documento que
-            describe el trabajo. Es el artefacto que se abre. Esta página es
-            ese artefacto: HTML, un estilo y un despliegue con HTTPS.
-          </p>
-        </article>
-        <article class="card">
-          <p class="card__kicker">02</p>
-          <h2>Una sola fuente</h2>
-          <p>
-            El código vive en GitHub, en la rama main del repositorio
-            Elf3n-RO/semana-9-pagina-web-aws. Amplify, en us-east-2, observa
-            esa rama y publica el mismo árbol que está en el repositorio.
-          </p>
-        </article>
-        <article class="card">
-          <p class="card__kicker">03</p>
-          <h2>Cómo se comprueba</h2>
-          <p>
-            El despliegue está bien si la página carga, el certificado es
-            válido y el contenido coincide con el último cambio de la rama.
-            No hace falta un servidor propio para sostenerla.
-          </p>
-        </article>
-      </section>
-
-      <section class="container more" id="mas">
-        <div class="more__copy">
-          <p class="eyebrow">Referencia</p>
-          <h2>Más información</h2>
-          <p>
-            El resumen de arriba cabe en una pantalla. El material de apoyo
-            está reunido en el código de la derecha: ábrelo desde el teléfono
-            o sigue el enlace.
-          </p>
-          <a class="btn" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Más información</a>
-          <p class="fine">Oleg Kuznetsov · elf3n5@gmail.com</p>
-        </div>
-        <figure class="qr">
-          <img
-            src="rick.svg"
-            width="460"
-            height="460"
-            alt="Código QR con más información sobre esta entrega"
-          />
-          <figcaption>Más información</figcaption>
+    <main class="container">
+      <section class="memes">
+        <figure class="memes__wide">
+          <img src="img/cinema.png" alt="Absolute cinema" />
+        </figure>
+        <figure>
+          <img src="img/carrera.png" alt="De ingeniero a desempleado" />
+        </figure>
+        <figure>
+          <img src="img/oficios.png" alt="Artistas y programadores" />
+        </figure>
+        <figure class="memes__wide">
+          <img src="img/error42.jpg" alt="Error en la línea 42" />
+        </figure>
+        <figure>
+          <img src="img/nyan.png" alt="Nyan Cat" />
+        </figure>
+        <figure>
+          <img src="img/gato.png" alt="Gato en la carretera" />
+        </figure>
+        <figure class="memes__wide">
+          <img src="img/ardilla.png" alt="Ardilla saludando" />
+        </figure>
+        <figure class="memes__wide">
+          <img src="img/continua.png" alt="To be continued" />
         </figure>
       </section>
+
+      <figure class="qr">
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+          <img src="img/qr-meme.png" width="679" height="684" alt="Código para consultar más información" />
+        </a>
+        <figcaption>Más información</figcaption>
+      </figure>
     </main>
 
-    <footer class="footer">
-      <div class="container footer__inner">
-        <p>Oleg Kuznetsov</p>
-        <p>Modelado Ágil de Software</p>
-      </div>
-    </footer>
+    <div id="cantina" class="cantina"></div>
+
+    <script>
+      var player = null;
+      var sound = document.getElementById("sound");
+
+      function playCantina() {
+        if (!player || !player.playVideo) return;
+        player.unMute();
+        player.setVolume(45);
+        player.playVideo();
+      }
+
+      function toggleCantina() {
+        if (!player || !player.getPlayerState) return;
+        var playing = player.getPlayerState() === 1 && !player.isMuted();
+        if (playing) {
+          player.pauseVideo();
+          sound.setAttribute("aria-pressed", "false");
+          return;
+        }
+        playCantina();
+      }
+
+      sound.addEventListener("click", function (event) {
+        event.stopPropagation();
+        toggleCantina();
+      });
+
+      document.addEventListener(
+        "pointerdown",
+        function () {
+          playCantina();
+        },
+        { once: true }
+      );
+
+      window.onYouTubeIframeAPIReady = function () {
+        player = new YT.Player("cantina", {
+          videoId: "EsvfptdFXf4",
+          playerVars: {
+            autoplay: 1,
+            loop: 1,
+            playlist: "EsvfptdFXf4",
+            controls: 0,
+            disablekb: 1,
+            fs: 0,
+            modestbranding: 1,
+            rel: 0,
+            playsinline: 1,
+          },
+          events: {
+            onReady: function (event) {
+              event.target.mute();
+              event.target.setVolume(45);
+              event.target.playVideo();
+            },
+            onStateChange: function (event) {
+              var audible = event.data === 1 && !player.isMuted();
+              sound.setAttribute("aria-pressed", audible ? "true" : "false");
+              if (event.data === 0) event.target.playVideo();
+            },
+          },
+        });
+      };
+    </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
   </body>
 </html>

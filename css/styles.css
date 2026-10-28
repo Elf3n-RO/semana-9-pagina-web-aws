@@ -45,7 +45,8 @@ body {
 }
 
 .header__inner,
-.footer__inner {
+.footer__inner,
+.header__actions {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -70,6 +71,58 @@ body {
 
 .header__link:hover {
   color: var(--grad-a);
+}
+
+.sound {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--fg);
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sound[aria-pressed="true"] {
+  border-color: transparent;
+  color: #fff4f0;
+  background: linear-gradient(100deg, var(--primary), #c07a5b);
+}
+
+.memes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 1.4rem 0 0.4rem;
+}
+
+.memes figure {
+  margin: 0;
+}
+
+.memes__wide {
+  grid-column: 1 / -1;
+}
+
+.memes img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: #000;
+}
+
+.cantina {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  height: 120px;
+  opacity: 0.01;
+  pointer-events: none;
 }
 
 .header__meta,
@@ -177,6 +230,11 @@ h2 {
   padding-bottom: 4.5rem;
 }
 
+.qr {
+  width: min(100%, 520px);
+  margin: 1.2rem auto 3rem;
+}
+
 .more .eyebrow {
   margin-bottom: 0.7rem;
 }
@@ -203,9 +261,12 @@ h2 {
 }
 
 .qr {
-  margin: 0;
   padding: 1.3rem 1.3rem 1rem;
   text-align: center;
+}
+
+.qr a {
+  display: block;
 }
 
 .qr img {
@@ -231,8 +292,13 @@ h2 {
 
 @media (max-width: 800px) {
   .notes,
-  .more {
+  .more,
+  .memes {
     grid-template-columns: 1fr;
+  }
+
+  .memes__wide {
+    grid-column: auto;
   }
 
   .hero {
