@@ -3,90 +3,101 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Oleg Kuznetsov</title>
+    <title>Oleg Kuznetsov · Modelado ágil</title>
     <meta
       name="description"
-      content="Página de Oleg Kuznetsov, semana 9 de Modelado Ágil de Software. Incluye un código QR de Never Gonna Give You Up."
+      content="Nota de Oleg Kuznetsov sobre publicar un incremento de software desde GitHub con AWS Amplify."
     />
+    <meta name="theme-color" content="#0c0a0a" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=2" />
+    <link rel="stylesheet" href="css/styles.css?v=3" />
   </head>
   <body>
-    <header class="top">
-      <p class="mark">Oleg Kuznetsov</p>
-      <p class="meta">Semana 9</p>
+    <header class="header">
+      <div class="container header__inner">
+        <p class="logo">Oleg Kuznetsov</p>
+        <p class="header__meta">ULEAM · Semana 9</p>
+      </div>
     </header>
 
     <main>
       <section class="hero">
-        <p class="eyebrow">ULEAM · Modelado Ágil de Software</p>
-        <h1>Una página que no te suelta.</h1>
-        <p class="lede">
-          Oleg Kuznetsov, quinto semestre. Esta página vive en GitHub y AWS
-          Amplify la publica cada vez que cambia la rama principal. Abajo hay
-          un código. Es exactamente lo que parece.
-        </p>
+        <div class="hero__glow" aria-hidden="true"></div>
+        <div class="container hero__inner">
+          <p class="eyebrow">Modelado Ágil de Software · 5.º semestre</p>
+          <h1>El incremento que se puede abrir.</h1>
+          <p class="lead">
+            Una página estática es el incremento más pequeño que sigue siendo
+            software. Está en un repositorio, se publica sola cuando cambia la
+            rama principal y cualquiera puede comprobar que responde.
+          </p>
+        </div>
       </section>
 
-      <section class="split">
-        <div class="about">
-          <h2>Lo necesario</h2>
-          <dl>
-            <div>
-              <dt>Nombre</dt>
-              <dd>Oleg Kuznetsov</dd>
-            </div>
-            <div>
-              <dt>Universidad</dt>
-              <dd>ULEAM</dd>
-            </div>
-            <div>
-              <dt>Materia</dt>
-              <dd>Modelado Ágil de Software</dd>
-            </div>
-            <div>
-              <dt>Semestre</dt>
-              <dd>5.º</dd>
-            </div>
-            <div>
-              <dt>Repositorio</dt>
-              <dd>Elf3n-RO / semana-9-pagina-web-aws</dd>
-            </div>
-            <div>
-              <dt>Publicación</dt>
-              <dd>AWS Amplify · us-east-2</dd>
-            </div>
-            <div>
-              <dt>Contacto</dt>
-              <dd>elf3n5@gmail.com</dd>
-            </div>
-          </dl>
-        </div>
+      <section class="container notes">
+        <article class="card">
+          <p class="card__kicker">01</p>
+          <h2>Hecho visible</h2>
+          <p>
+            En un ciclo corto el criterio de terminado no es el documento que
+            describe el trabajo. Es el artefacto que se abre. Esta página es
+            ese artefacto: HTML, un estilo y un despliegue con HTTPS.
+          </p>
+        </article>
+        <article class="card">
+          <p class="card__kicker">02</p>
+          <h2>Una sola fuente</h2>
+          <p>
+            El código vive en GitHub, en la rama main del repositorio
+            Elf3n-RO/semana-9-pagina-web-aws. Amplify, en us-east-2, observa
+            esa rama y publica el mismo árbol que está en el repositorio.
+          </p>
+        </article>
+        <article class="card">
+          <p class="card__kicker">03</p>
+          <h2>Cómo se comprueba</h2>
+          <p>
+            El despliegue está bien si la página carga, el certificado es
+            válido y el contenido coincide con el último cambio de la rama.
+            No hace falta un servidor propio para sostenerla.
+          </p>
+        </article>
+      </section>
 
-        <figure class="card">
+      <section class="container more" id="mas">
+        <div class="more__copy">
+          <p class="eyebrow">Referencia</p>
+          <h2>Más información</h2>
+          <p>
+            El resumen de arriba cabe en una pantalla. El material de apoyo
+            está reunido en el código de la derecha: ábrelo desde el teléfono
+            o sigue el enlace.
+          </p>
+          <a class="btn" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Más información</a>
+          <p class="fine">Oleg Kuznetsov · elf3n5@gmail.com</p>
+        </div>
+        <figure class="qr">
           <img
             src="rick.svg"
-            width="280"
-            height="280"
-            alt="Código QR del video Never Gonna Give You Up, de Rick Astley, en YouTube"
+            width="240"
+            height="240"
+            alt="Código QR con más información sobre esta entrega"
           />
-          <figcaption>
-            <p class="song">Never Gonna Give You Up</p>
-            <p class="artist">Rick Astley</p>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Abrir el video</a>
-          </figcaption>
+          <figcaption>Más información</figcaption>
         </figure>
       </section>
     </main>
 
-    <footer>
-      <p>Oleg Kuznetsov</p>
-      <p>Modelado Ágil de Software · Semana 9</p>
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>Oleg Kuznetsov</p>
+        <p>Modelado Ágil de Software</p>
+      </div>
     </footer>
   </body>
 </html>
