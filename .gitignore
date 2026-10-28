@@ -1,6 +1,4 @@
 .DS_Store
 Thumbs.db
 node_modules/
-.aws-sam/
-cdk.out/
-*.local
+dist/
