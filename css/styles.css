@@ -62,6 +62,16 @@ body {
   letter-spacing: -0.03em;
 }
 
+.header__link {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.header__link:hover {
+  color: var(--grad-a);
+}
+
 .header__meta,
 .footer,
 .fine,
