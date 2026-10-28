@@ -11,65 +11,129 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=9" />
+    <link rel="stylesheet" href="css/styles.css?v=11" />
   </head>
   <body>
     <header class="header">
       <div class="container header__inner">
         <p class="logo">Oleg Kuznetsov</p>
         <div class="header__actions">
-          <button class="sound" id="sound" type="button" aria-pressed="false" aria-label="Música">
-            ♪
+          <button class="sound" id="sound" type="button" aria-pressed="false">
+            <span aria-hidden="true">♪</span>
+            <span id="sound-label">Música</span>
           </button>
         </div>
       </div>
     </header>
 
     <main class="container">
-      <section class="board">
-        <figure class="place place-cinema">
+      <section class="gallery" aria-label="Memes">
+        <button class="card card--hero" type="button" data-index="0">
           <img src="img/cinema.png" alt="Absolute cinema" />
-        </figure>
-        <figure class="place place-carrera">
+        </button>
+        <button class="card" type="button" data-index="1">
           <img src="img/carrera.png" alt="De ingeniero a desempleado" />
-        </figure>
-        <figure class="place place-oficios">
+        </button>
+        <button class="card" type="button" data-index="2">
           <img src="img/oficios.png" alt="Artistas y programadores" />
-        </figure>
-        <figure class="place place-error">
-          <img src="img/error42.jpg" alt="Error en la línea 42" />
-        </figure>
-        <figure class="place place-nyan">
-          <img src="img/nyan.png" alt="Nyan Cat" />
-        </figure>
-        <figure class="place place-gato">
+        </button>
+        <button class="card" type="button" data-index="3">
           <img src="img/gato.png" alt="Gato en la carretera" />
-        </figure>
-        <figure class="place place-ardilla">
+        </button>
+        <button class="card" type="button" data-index="4">
+          <img src="img/nyan.png" alt="Nyan Cat" />
+        </button>
+        <button class="card card--full" type="button" data-index="5">
+          <img src="img/error42.jpg" alt="Error en la línea 42" />
+        </button>
+        <button class="card card--wide" type="button" data-index="6">
           <img src="img/ardilla.png" alt="Ardilla saludando" />
-        </figure>
-        <figure class="place place-continua">
+        </button>
+        <button class="card card--wide" type="button" data-index="7">
           <img src="img/continua.png" alt="To be continued" />
-        </figure>
-        <figure class="place place-qr">
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <img src="img/qr-meme.png" width="679" height="684" alt="Código para consultar más información" />
-          </a>
-          <figcaption>Más información</figcaption>
-        </figure>
+        </button>
+        <a class="card card--qr" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+          <img src="img/qr-meme.png" width="679" height="684" alt="Código para consultar más información" />
+          <span>Más información</span>
+        </a>
       </section>
     </main>
 
+    <dialog class="lightbox" id="lightbox">
+      <div class="lightbox__frame">
+        <img id="lightbox-img" alt="" />
+        <div class="lightbox__bar">
+          <button type="button" id="lightbox-prev" aria-label="Anterior">←</button>
+          <button type="button" id="lightbox-next" aria-label="Siguiente">→</button>
+          <button type="button" id="lightbox-close" aria-label="Cerrar">Cerrar</button>
+        </div>
+      </div>
+    </dialog>
+
     <div id="cantina" class="cantina"></div>
 
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>Oleg Kuznetsov</p>
+        <p>AWS Amplify · us-east-2</p>
+      </div>
+    </footer>
+
     <script>
+      var shots = Array.prototype.map.call(
+        document.querySelectorAll(".gallery button"),
+        function (button) {
+          var image = button.querySelector("img");
+          return { src: image.getAttribute("src"), alt: image.alt };
+        }
+      );
+      var lightbox = document.getElementById("lightbox");
+      var lightboxImg = document.getElementById("lightbox-img");
+      var current = 0;
+
+      function showShot(index) {
+        current = (index + shots.length) % shots.length;
+        lightboxImg.src = shots[current].src;
+        lightboxImg.alt = shots[current].alt;
+      }
+
+      document.querySelector(".gallery").addEventListener("click", function (event) {
+        var button = event.target.closest("button[data-index]");
+        if (!button) return;
+        showShot(Number(button.getAttribute("data-index")));
+        lightbox.showModal();
+      });
+
+      document.getElementById("lightbox-prev").addEventListener("click", function () {
+        showShot(current - 1);
+      });
+      document.getElementById("lightbox-next").addEventListener("click", function () {
+        showShot(current + 1);
+      });
+      document.getElementById("lightbox-close").addEventListener("click", function () {
+        lightbox.close();
+      });
+      lightbox.addEventListener("click", function (event) {
+        if (event.target === lightbox) lightbox.close();
+      });
+      lightbox.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowRight") showShot(current + 1);
+        if (event.key === "ArrowLeft") showShot(current - 1);
+      });
+
       var player = null;
       var sound = document.getElementById("sound");
+      var soundLabel = document.getElementById("sound-label");
+
+      function setSoundState(on) {
+        sound.setAttribute("aria-pressed", on ? "true" : "false");
+        soundLabel.textContent = on ? "Pausa" : "Música";
+      }
 
       function playCantina() {
         if (!player || !player.playVideo) return;
         player.unMute();
-        player.setVolume(45);
+        player.setVolume(40);
         player.playVideo();
       }
 
@@ -78,24 +142,15 @@
         var playing = player.getPlayerState() === 1 && !player.isMuted();
         if (playing) {
           player.pauseVideo();
-          sound.setAttribute("aria-pressed", "false");
+          setSoundState(false);
           return;
         }
         playCantina();
       }
 
-      sound.addEventListener("click", function (event) {
-        event.stopPropagation();
+      sound.addEventListener("click", function () {
         toggleCantina();
       });
-
-      document.addEventListener(
-        "pointerdown",
-        function () {
-          playCantina();
-        },
-        { once: true }
-      );
 
       window.onYouTubeIframeAPIReady = function () {
         player = new YT.Player("cantina", {
@@ -118,8 +173,8 @@
               event.target.playVideo();
             },
             onStateChange: function (event) {
-              var audible = event.data === 1 && !player.isMuted();
-              sound.setAttribute("aria-pressed", audible ? "true" : "false");
+              var audible = event.data === 1 && player && !player.isMuted();
+              setSoundState(audible);
               if (event.data === 0) event.target.playVideo();
             },
           },
